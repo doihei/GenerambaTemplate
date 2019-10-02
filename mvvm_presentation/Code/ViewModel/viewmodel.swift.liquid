@@ -1,0 +1,90 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxCocoa
+import RxSwift
+import Unio
+
+protocol {{ module_info.name }}ViewModelType: AnyObject {
+    var input: InputWrapper<{{ module_info.name }}ViewModel.Input> { get }
+    var output: OutputWrapper<{{ module_info.name }}ViewModel.Output> { get }
+}
+
+final class {{ module_info.name }}ViewModel: UnioStream<{{ module_info.name }}ViewModel.Logic>, {{ module_info.name }}ViewModelType {
+
+    init(extra: Extra, state: State) {
+        super.init(input: Input(),
+                   state: state,
+                   extra: extra,
+                   logic: Logic())
+    }
+}
+
+extension {{ module_info.name }}ViewModel {
+
+    struct Input: InputType {
+
+        /*
+         *  EXAMPLE:
+         *
+         *  let buttonTap = PublishRelay<Void>()
+         */
+    }
+
+    struct Output: OutputType {
+
+        /*
+         *  EXAMPLE:
+         *
+         *  let isEnabled: Observable<Bool>
+         */
+    }
+
+    struct State: StateType {
+        let wireframe: {{ module_info.name }}Wireframe
+    }
+
+    struct Extra: ExtraType {
+        let useCase: {{ module_info.name }}UseCase
+    }
+
+    struct Logic: LogicType {
+        typealias Input = {{ module_info.name }}ViewModel.Input
+        typealias Output = {{ module_info.name }}ViewModel.Output
+        typealias State = {{ module_info.name }}ViewModel.State
+        typealias Extra = {{ module_info.name }}ViewModel.Extra
+
+        let disposeBag = DisposeBag()
+    }
+}
+
+extension {{ module_info.name }}ViewModel.Logic {
+
+    func bind(from dependency: Dependency<Input, State, Extra>) -> Output {
+
+        let state = dependency.state
+        let extra = dependency.extra
+
+        /*
+         *  EXAMPLE:
+         *
+         *  dependency.inputObservable(for: \.buttonTap)
+         *      .map { _ in false }
+         *      .bind(to: state.isEnabled)
+         *      .disposed(by: disposeBag)
+         */
+
+        return Output(
+            /*
+             * EXAMPLE:
+             *
+             * isEnabled: state.isEnabled.asObservable()
+             */
+        )
+    }
+}
