@@ -13,7 +13,7 @@ import UIKit
 
 final class {{ module_info.name }}ViewController: UIViewController, StoryboardBased {
 
-    private lazy var viewModel = undefined()
+    private lazy var viewModel: {{ module_info.name }}ViewModelType = undefined()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ final class {{ module_info.name }}ViewController: UIViewController, StoryboardBa
 }
 
 // MARK: - bind input
-extensiton {{ module_info.name }}ViewController {
+extension {{ module_info.name }}ViewController {
 
     private func bindInput() {
         /*
@@ -39,7 +39,7 @@ extensiton {{ module_info.name }}ViewController {
 }
 
 // MARK: - bind output
-extensiton {{ module_info.name }}ViewController {
+extension {{ module_info.name }}ViewController {
     
     private func bindOutput() {
         /*
