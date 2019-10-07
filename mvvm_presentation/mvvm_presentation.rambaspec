@@ -18,7 +18,7 @@ code_files:
 
 # Wireframe
 - {name: Wireframe/Wireframe.swift, path: Code/Wireframe/wireframe.swift.liquid}
-- {name: Wireframe/TransitToWireframe.swift, path: Code/Wireframe/transittowireframe.swift.liquid, custom_name: "TransitTo{{ prefix }}Wireframe.swift"}
+- {name: Wireframe/TransitToWireframe.swift, path: Code/Wireframe/transittowireframe.swift.liquid, custom_name: "TransitTo{{ module_info.name }}Wireframe.swift"}
 
 # Builder
 - {name: Builder/Builder.swift, path: Code/Builder/builder.swift.liquid}
