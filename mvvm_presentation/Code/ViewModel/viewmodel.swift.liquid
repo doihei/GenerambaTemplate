@@ -37,7 +37,7 @@ extension {{ module_info.name }}ViewModel {
     }
 
     struct Output: OutputType {
-
+        let networkState: BehaviorRelay<NetworkState>
         /*
          *  EXAMPLE:
          *
@@ -47,6 +47,8 @@ extension {{ module_info.name }}ViewModel {
 
     struct State: StateType {
         let wireframe: {{ module_info.name }}Wireframe
+
+        let networkState = BehaviorRelay<NetworkState>(value: .normal)
     }
 
     struct Extra: ExtraType {
@@ -80,6 +82,7 @@ extension {{ module_info.name }}ViewModel.Logic {
          */
 
         return Output(
+            networkState: state.networkState
             /*
              * EXAMPLE:
              *

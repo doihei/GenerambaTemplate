@@ -42,6 +42,11 @@ extension {{ module_info.name }}ViewController {
 extension {{ module_info.name }}ViewController {
     
     private func bindOutput() {
+
+        viewModel.output.networkState
+            .bind(to: rx.networkState)
+            .disposed(by: disposeBag)
+
         /*
          *  EXAMPLE:
          *
