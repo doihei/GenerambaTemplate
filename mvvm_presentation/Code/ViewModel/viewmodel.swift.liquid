@@ -15,13 +15,12 @@ protocol {{ module_info.name }}ViewModelType: AnyObject {
     var output: OutputWrapper<{{ module_info.name }}ViewModel.Output> { get }
 }
 
-final class {{ module_info.name }}ViewModel: UnioStream<{{ module_info.name }}ViewModel.Logic>, {{ module_info.name }}ViewModelType {
+final class {{ module_info.name }}ViewModel: UnioStream<{{ module_info.name }}ViewModel>, {{ module_info.name }}ViewModelType {
 
     init(extra: Extra, state: State) {
         super.init(input: Input(),
                    state: state,
-                   extra: extra,
-                   logic: Logic())
+                   extra: extra)
     }
 }
 
@@ -54,20 +53,11 @@ extension {{ module_info.name }}ViewModel {
     struct Extra: ExtraType {
         let useCase: {{ module_info.name }}UseCase
     }
-
-    struct Logic: LogicType {
-        typealias Input = {{ module_info.name }}ViewModel.Input
-        typealias Output = {{ module_info.name }}ViewModel.Output
-        typealias State = {{ module_info.name }}ViewModel.State
-        typealias Extra = {{ module_info.name }}ViewModel.Extra
-
-        let disposeBag = DisposeBag()
-    }
 }
 
-extension {{ module_info.name }}ViewModel.Logic {
+extension {{ module_info.name }}ViewModel {
 
-    func bind(from dependency: Dependency<Input, State, Extra>) -> Output {
+    static func bind(from dependency: Dependency<Input, State, Extra>, disposeBag: DisposeBag) -> Output {
 
         let state = dependency.state
         let extra = dependency.extra
