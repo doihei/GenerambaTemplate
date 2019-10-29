@@ -19,8 +19,10 @@ final class {{ module_info.name }}Builder {
         wireframe.viewController = viewController
 
         let viewModel = {{ module_info.name }}ViewModel(
-            extra: .init(useCase: {{ module_info.name }}UseCaseProvider.provide()),
-            state: .init(wireframe: wireframe)
+            extra: .init(
+                wireframe: wireframe,
+                useCase: {{ module_info.name }}UseCaseProvider.provide()
+            )
         )
     
         viewController.viewModel = viewModel

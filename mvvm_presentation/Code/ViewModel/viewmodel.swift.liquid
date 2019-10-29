@@ -17,9 +17,9 @@ protocol {{ module_info.name }}ViewModelType: AnyObject {
 
 final class {{ module_info.name }}ViewModel: UnioStream<{{ module_info.name }}ViewModel>, {{ module_info.name }}ViewModelType {
 
-    init(extra: Extra, state: State) {
+    init(extra: Extra) {
         super.init(input: Input(),
-                   state: state,
+                   state: State(),
                    extra: extra)
     }
 }
@@ -45,12 +45,11 @@ extension {{ module_info.name }}ViewModel {
     }
 
     struct State: StateType {
-        let wireframe: {{ module_info.name }}Wireframe
-
         let networkState = BehaviorRelay<NetworkState>(value: .normal)
     }
 
     struct Extra: ExtraType {
+        let wireframe: {{ module_info.name }}Wireframe
         let useCase: {{ module_info.name }}UseCase
     }
 }
