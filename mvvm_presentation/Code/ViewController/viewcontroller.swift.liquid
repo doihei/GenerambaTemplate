@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class {{ module_info.name }}ViewController: UIViewController, StoryboardBased {
+final class {{ module_info.name }}ViewController: UIViewController, StoryboardBased, ShowLoadingView {
 
     lazy var viewModel: {{ module_info.name }}ViewModelType = undefined()
     
