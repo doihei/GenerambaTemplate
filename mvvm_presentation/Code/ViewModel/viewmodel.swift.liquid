@@ -17,8 +17,8 @@ protocol {{ module_info.name }}ViewModelType: AnyObject {
 
 final class {{ module_info.name }}ViewModel: UnioStream<{{ module_info.name }}ViewModel>, {{ module_info.name }}ViewModelType {
 
-    init(extra: Extra) {
-        super.init(input: Input(),
+    convenience init(extra: Extra) {
+        self.init(input: Input(),
                    state: State(),
                    extra: extra)
     }
